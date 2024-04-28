@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">  
+
+    <title>Product Management - Magnet </title>
+    <link rel="stylesheet" href="admin_style.css">
+    <style>
+@media (max-width: 576px) {
+            img{
+            width: 50%;
+            height: 50%;
+        }   
+        }
+        img{
+            display: flex;
+            width: 20%;
+            height: 20%;
+        }
+        .product-card {
+          margin: auto;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  transition: transform 0.3s ease;  
+}
+
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1>Add Product</h1>
+    </header>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <ul>
+          <li><a href="admin_dashboard.html">Dashboard</a></li>
+          <li><a href="admin_product.html">Products</a></li>
+          <!-- <li><a href="admin_order.html">Orders</a></li> -->
+          <li><a href="admin_customer.html">Customers</a></li>
+          <!-- <li><a href="admin_inventory.html">inventory</a></li> -->
+          <!-- <li><a href="admin_analysis.html">Analytics</a></li> -->
+          <!-- <li><a href="admin_regist.html">Registration</a></li> -->
+          <!-- <li><a href="#">Settings</a></li> -->
+          <li><a href="index.html">Logout</a></li>
+      </ul>
+  </div>
+
+    <!-- Content -->
+    <div class="content">
+        <div class="product-form">
+            <h2>Add New Product</h2>
+            <form id="add-product-form">
+                <label for="name">Product Name:</label>
+                <input type="text" id="name" required><br>
+                <label for="price">Price:</label>
+                <input type="number" id="price" required><br>
+                <label for="image">Image URL:</label>
+                <input type="text" id="image" required><br>
+                <button type="button" onclick="addProduct()">Add Product</button>
+            </form>
+        </div>
+
+        <h2>Product List</h2>
+        <div class="product-card">
+        <ul class="product-list" id="product-list">
+            <div id="product-list" class="product-card"></div>
+            <!-- Product items will be added dynamically here -->
+        </ul>
+        </div>
+    </div>
+    <footer id="footerMobile" class="footer-nav-mobile">
+      <div class="container">
+        <ul class="nav">
+          <li class="nav-item">
+            <a class="nav-link" href="admin_dashboard.html"><i class="fas fa-tachometer-alt fa-lg"></i>Dashboard</a></li>
+          <li class="nav-item">
+            <a class="nav-link" href="admin_product.html"><i class="fas fa-box-open fa-lg"></i>Products</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="admin_customer.html"><i class="fas fa-users fa-lg"></i>Customers</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="index.html"><i class="fas fa-sign-out-alt fa-lg"></i>Logout</a>
+          </li>
+
+        </ul>
+      </div>
+    </footer> 
+
+    <script>
+        let products = [];
+
+function addProduct() {
+  const name = document.getElementById('name').value;
+  const price = document.getElementById('price').value;
+  const image = document.getElementById('image').value;
+
+  const product = { name, price, image };
+  products.push(product);
+  saveProducts(); // Save products to local storage
+  displayProducts();
+  clearForm();
+}
+
+function saveProducts() {
+  localStorage.setItem('products', JSON.stringify(products));
+}
+
+function loadProducts() {
+  const storedProducts = localStorage.getItem('products');
+  if (storedProducts) {
+    products = JSON.parse(storedProducts);
+    displayProducts();
+  }
+}
+
+function displayProducts() {
+  const productList = document.getElementById('product-list');
+  productList.innerHTML = '';
+
+  products.forEach((product, index) => {
+    const card = document.createElement('div');
+    card.classList.add('product-card');
+    card.innerHTML = `
+      <img src="${product.image}" alt="${product.name}">
+      <h3>${product.name}</h3>
+      <p>$${product.price}</p>
+      <button onclick="editProduct(${index})">Edit</button>
+      <button onclick="deleteProduct(${index})">Delete</button>
+    `;
+    productList.appendChild(card);
+  });
+}
+
+function deleteProduct(index) {
+  products.splice(index, 1);
+  saveProducts(); // Save updated products to local storage
+  displayProducts();
+}
+
+function editProduct(index) {
+  const product = products[index];
+  document.getElementById('name').value = product.name;
+  document.getElementById('price').value = product.price;
+  document.getElementById('image').value = product.image;
+
+  // Update product on add button click
+  const addButton = document.querySelector('#product-form button');
+  addButton.innerHTML = 'Update Product';
+  addButton.onclick = () => updateProduct(index);
+}
+
+function updateProduct(index) {
+  const name = document.getElementById('name').value;
+  const price = document.getElementById('price').value;
+  const image = document.getElementById('image').value;
+
+  products[index] = { name, price, image };
+  saveProducts(); // Save updated products to local storage
+  displayProducts();
+  clearForm();
+
+  // Reset form and button text after update
+  const addButton = document.querySelector('#product-form button');
+  addButton.innerHTML = 'Add Product';
+  addButton.onclick = addProduct;
+}
+
+function clearForm() {
+  document.getElementById('name').value = '';
+  document.getElementById('price').value = '';
+  document.getElementById('image').value = '';
+}
+
+loadProducts(); // Load products from local storage on page load
+
+
+function displayProducts() {
+  const productList = document.getElementById('product-list');
+  productList.innerHTML = '';
+
+  products.forEach((product, index) => {
+    const card = document.createElement('div');
+    card.classList.add('product-card');
+    card.innerHTML = `
+      <img src="${product.image}" alt="${product.name}">
+      <h3>${product.name}</h3>
+      <p>₹${product.price}</p>
+      <button onclick="editProduct(${index})">Edit</button>
+      <button onclick="deleteProduct(${index})">Delete</button>
+    `;
+    productList.appendChild(card);
+  });
+}
+
+    </script>
+</body>
+</html>
+
+    

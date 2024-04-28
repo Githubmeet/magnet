@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> shipping</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="cart.css">
+  <link rel="stylesheet" href="footer.css">
+    <style>
+/* styles.css */
+
+/* General styles */
+body {
+  font-family: 'Roboto', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f8f9fa;
+}
+
+/* Navbar styles */
+.navbar {
+  background-color: #333;
+}
+
+.navbar-brand,
+.navbar-nav .nav-link {
+  color: #fff;
+}
+
+/* Main content styles */
+.row {
+  margin-top: 20px;
+}
+
+
+label {
+  font-weight: bold;
+}
+
+
+.submit-btn:hover {
+  background-color: #0056b3;
+}
+
+.cart-summary {
+  height: 100%;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.cart-item{
+  display: none;
+}
+.summary-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.summary-item:last-child {
+  margin-bottom: 0;
+}
+
+
+    </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"> <!-- Add fixed-top class here -->
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Magnet </a>
+      <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button> -->
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="index.html"><i class="fas fa-home fa-lg"></i></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="cart.html"><i class="fas fa-shopping-cart fa-lg"></i></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="login.html"><i class="fas fa-user fa-lg"></i></a>
+          </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link" href="admin_dashboard.html"><i class="fas fa-cogs fa-lg"></i></a>
+          </li> -->
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+    <!-- Jumbotron -->
+    <div class="jumbotron">
+      <h1 class="display-4">Shipping Address</h1>
+      <p class="lead">manage the Shipping Address</p>
+
+      <!-- <p class="lead" id="welcomeMessage" style="display: none;">Welcome, User!</p> -->
+  </div>
+
+    <main>
+      <div class="contain">
+        <div class="shipping-container">
+          <h2>Shipping Information</h2>
+          <form id="shippingForm">
+            <!-- <label for="fullName">Full Name:</label> -->
+            <input type="text" id="fullName" name="fullName" placeholder="Full Name"><br>
+            <!-- <label for="email">Email:</label> -->
+            <input type="email" id="email" name="email" placeholder="Email" ><br>
+            <!-- <label for="address">Address:</label> -->
+            <input type="text" id="number" name="phone" placeholder="phone Number"><br>
+            <textarea id="address" name="address" rows="1" placeholder="Address" ></textarea><br>
+            <!-- <label for="city">City Name:</label> -->
+            <input type="text" id="city" name="city" placeholder="City" ><br>
+            <!-- <label for="zip">Pin Code:</label> -->
+            <input type="text" id="zip" name="zip" placeholder="Pin code" ><br>
+          </form>
+        </div>
+                <!-- <div class="col-6"> -->
+                  <div class="cart-container">
+                    <!-- <div class="cart"> -->
+                        <div class="cart-items" id="cart-items">
+                      </div>
+                    <!-- <div class="col-6"> -->
+                            <!-- <div class="shipping-form"> -->
+                            <table>
+                            <tbody id="cart-items">
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <h2>Bill Summary</h2><br>                                        <div class="summary-item">
+                                          <span>Subtotal</span>
+                                          <span id="subtotal">$0.00</span>
+                                        </div><hr>
+                                        <div class="summary-item">
+                                          <span>Shipping</span>
+                                          <span>Free</span>
+                                        </div><hr>
+                                        <div class="summary-item">
+                                          <span>Total</span>
+                                          <span id="total-price">$0.00</span>
+                                        </div><hr>
+                                     </tr>
+                                </tfoot>
+                                
+                            </table>
+                            <br>
+                            <a href="pay.html">
+                              <button class="btn btn-primary btn-block mt-3">Complete Order</button></a>
+                    
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer id="footerMobile" class="footer-nav-mobile">
+      <div class="container">
+        <ul class="nav">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html"><i class="fas fa-home fa-lg"></i> Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="cart.html"><i class="fas fa-shopping-cart fa-lg"></i> Cart</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="login.html"><i class="fas fa-user fa-lg"></i> Login</a>
+          </li>
+  
+        </ul>
+      </div>
+    </footer> 
+      <footer class="footer mt-auto py-3 bg-dark text-white">
+      <div class="container text-center">
+        <p>&copy; 2024 Magnet. All rights reserved.</p>
+      </div>
+    </footer>
+  
+    <script src="cart-script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>  
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thank You for Shopping</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="footer.css">
+
+  <style>
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #50727b2c !important; /* Dark clay color */
+    font-family: 'Arial', sans-serif;
+  
+  }
+  .container {
+    /* padding-top: 40px; */
+    text-align: center;
+    /* background-color: #fff; */
+  }
+  .navbar {
+    background-color: #35374B !important; /* Dark clay color */
+    /* position :absolute; */
+  }
+  
+  .navbar-brand {
+    color: #f8f9fa !important; /* Light background color */
+  }
+
+  .navbar-nav .nav-link {
+    color: #f8f9fa !important; /* Light background color */
+  }
+    .thank-you-icon {
+      margin-top: 20px;
+      font-size: 100px;
+      color: #28a745; /* Green color */
+    }
+
+    .thank-you-heading {
+      margin-top: 20px;
+      color: #333; /* Dark gray color */
+      font-size: 32px;
+      font-weight: bold;
+    }
+
+    .thank-you-message {
+      margin-top: 20px;
+      color: #666; /* Medium gray color */
+      font-size: 18px;
+    }
+
+    .continue-shopping-btn {
+      margin-top: 30px;
+      padding: 10px 30px;
+      background-color: #007bff; /* Blue color */
+      color: #fff; /* White color */
+      border: none;
+      border-radius: 5px;
+      font-size: 18px;
+      transition: background-color 0.3s ease;
+    }
+
+    .continue-shopping-btn:hover {
+      background-color: #0056b3; /* Darker blue on hover */
+    }
+    .product-card {
+    background-color: #f8f9fa; /* Light background color */
+    border-radius: 20px;
+    min-height: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    /* bottom: 20px; */
+    transition: all 0.3s ease;
+    margin-top: 80px;
+  }
+
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"> <!-- Add fixed-top class here -->
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Magnet </a>
+      <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button> -->
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="index.html"><i class="fas fa-home fa-lg"></i></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="cart.html"><i class="fas fa-shopping-cart fa-lg"></i></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="login.html"><i class="fas fa-user fa-lg"></i></a>
+          </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link" href="admin_dashboard.html"><i class="fas fa-cogs fa-lg"></i></a>
+          </li> -->
+        </ul>
+      </div>
+    </div>
+  </nav>
+<div class="container">
+  <div class="product-card">
+  <i class="fas fa-check-circle thank-you-icon"></i>
+  <h2 class="thank-you-heading">Thank You for Shopping!</h2>
+  <p class="thank-you-message">Your order has been successfully placed. We will process your order shortly.</p>
+  <p class="thank-you-message">You will receive an email confirmation with your order details.</p>
+  <a href="index.html" class="btn btn-primary continue-shopping-btn">Continue Shopping</a>
+  </div>
+</div>
+<footer id="footerMobile" class="footer-nav-mobile">
+  <div class="container">
+    <ul class="nav">
+      <li class="nav-item">
+        <a class="nav-link" href="index.html"><i class="fas fa-home fa-lg"></i> Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="cart.html"><i class="fas fa-shopping-cart fa-lg"></i> Cart</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="login.html"><i class="fas fa-user fa-lg"></i> Login</a>
+      </li>
+    </ul>
+  </div>
+</footer> 
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

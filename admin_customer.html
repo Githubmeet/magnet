@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">  
+
+    <title>Product Management - Magnet </title>
+    <link rel="stylesheet" href="admin_style.css">
+    <style>
+@media (max-width: 576px) {
+            img{
+            width: 50%;
+            height: 50%;
+        }   
+        }
+        img{
+            display: flex;
+            width: 20%;
+            height: 20%;
+        }
+        .product-card {
+          margin: auto;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  transition: transform 0.3s ease;  
+}
+
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1>Registration details</h1>
+    </header>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <ul>
+          <li><a href="admin_dashboard.html">Dashboard</a></li>
+          <li><a href="admin_product.html">Products</a></li>
+          <!-- <li><a href="admin_order.html">Orders</a></li> -->
+          <li><a href="admin_customer.html">Customers</a></li>
+          <!-- <li><a href="admin_inventory.html">inventory</a></li> -->
+          <!-- <li><a href="admin_analysis.html">Analytics</a></li> -->
+          <!-- <li><a href="admin_regist.html">Registration</a></li> -->
+          <!-- <li><a href="#">Settings</a></li> -->
+          <li><a href="index.html">Logout</a></li>
+      </ul>
+  </div>
+
+    <!-- Content -->
+    <main>
+    <div class="content">
+        <div class="product-form">
+          <section id="user-list">
+            <h2>User List</h2>
+            <table id="users-table">
+              <thead>
+                <tr>
+                  <th>Username</th>
+                  <th>Email</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="users-table-body"></tbody>
+            </table>
+          </section>
+        </main>
+        <footer id="footerMobile" class="footer-nav-mobile">
+          <div class="container">
+            <ul class="nav">
+              <li class="nav-item">
+                <a class="nav-link" href="admin_dashboard.html"><i class="fas fa-tachometer-alt fa-lg"></i>Dashboard</a></li>
+              <li class="nav-item">
+                <a class="nav-link" href="admin_product.html"><i class="fas fa-box-open fa-lg"></i>Products</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="admin_customer.html"><i class="fas fa-users fa-lg"></i>Customers</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="index.html"><i class="fas fa-sign-out-alt fa-lg"></i>Logout</a>
+              </li>
+  
+            </ul>
+          </div>
+        </footer> 
+  
+        <script src="login.js"></script>
+      </body>
+      </html>
+      

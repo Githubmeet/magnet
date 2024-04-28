@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>payment</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <!-- <link rel="stylesheet" href="pay.css"> -->
+    <link rel="stylesheet" href="cart.css">
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="#">Magnet </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="index.html"><i class="fas fa-home fa-lg"></i></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="cart.html"><i class="fas fa-shopping-cart fa-lg"></i></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="login.html"><i class="fas fa-user fa-lg"></i></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="admin_dashboard.html"><i class="fas fa-cogs fa-lg"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+    <!-- Jumbotron -->
+    <div class="jumbotron">
+      <h1 class="display-4">Payment</h1>
+      <p class="lead">Make Your Payment Here</p>
+
+      <!-- <p class="lead" id="welcomeMessage" style="display: none;">Welcome, User!</p> -->
+  </div>
+
+    <main>
+        <div class="contain">
+            <div class="shipping-container">
+                    <h2>Select Payment Method</h2>
+                <div class="payment-methods">
+
+                    <div class="payment-method">
+                        <input type="radio" id="upi-qr-codes" name="payment-method">
+                        <label for="upi-qr-codes">
+                            <i class="fas fa-qrcode text-info"></i>
+                            UPI QR Codes
+                        </label>
+                    </div>
+                    <div class="payment-method">
+                        <input type="radio" id="google-pay" name="payment-method">
+                        <label for="google-pay">
+                            <i class="fab fa-google-pay text-warning"></i>
+                            Google Pay
+                        </label>
+                    </div>
+                    <div class="payment-method">
+                        <input type="radio" id="paytm" name="payment-method">
+                        <label for="paytm">
+                            <i class="fab fa-cc-paypal text-primary"></i>
+                            Paytm
+                        </label>
+                    </div>
+                    <div class="payment-method">
+                        <input type="radio" id="cash-on-delivery" name="payment-method">
+                        <label for="cash-on-delivery">
+                            <i class="fas fa-money-bill-alt text-success"></i>
+                            Cash On Delivery
+                        </label>
+                    </div>
+                    <div class="payment-method">
+                        <input type="radio" id="store-credit" name="payment-method">
+                        <label for="store-credit">
+                            <i class="fas fa-store text-info"></i>
+                            Store Credit
+                        </label>
+                    </div>
+                    <div class="payment-method">
+                        <input type="radio" id="net-banking" name="payment-method">
+                        <label for="net-banking">
+                            <i class="fas fa-university text-warning"></i>
+                            Net Banking
+                        </label>
+                    </div>
+                    <div class="payment-method">
+                        <input type="radio" id="bhim-upi" name="payment-method">
+                        <label for="bhim-upi">
+                            <i class="fab fa-cc-visa text-primary"></i>
+                            BHIM UPI                        </label>
+                    </div>
+                    <div class="payment-method">
+                        <input type="radio" id="credit-debit-card" name="payment-method">
+                        <label for="credit-debit-card">
+                            <i class="fas fa-credit-card text-success"></i>
+                            Credit/Debit Card
+                        </label>    
+                    </div>
+                </div><hr>
+                <a href="thank.html">
+                <button class="btn btn-primary btn-block mt-3">Place Order</button></a>
+
+            </div>
+
+        <!-- Display cart data -->
+        <div class="cart-container">
+            <div class="cart-summary">
+                <h2>Your Cart</h2>
+                <div class="cart-items" id="cart-items"></div>
+              </div>
+              <div class="cart-summary-container">
+                <div class="cart-summary">
+                  <h2>Order Summary</h2>
+                  <div class="summary-item">
+                    <span>Subtotal</span>
+                    <span id="subtotal">$0.00</span>
+                  </div>
+                  <div class="summary-item">
+                    <span>Shipping</span>
+                    <span>Free</span>
+                  </div>
+                  <div class="summary-item">
+                    <span>Total</span>
+                    <span id="total-price">$0.00</span>
+                  </div>
+                  <a href="shipping.html" class="btn btn-primary">Proceed to Checkout</a>
+                </div>
+              </div>
+                  <!-- Cart items will be displayed here -->
+          </div>
+    
+        <!-- Display order summary -->
+        <div id="orderSummary">
+          <!-- Order summary will be displayed here -->
+        </div>
+      </div>
+    </div>
+    </div>
+    <footer class="footer">
+      <div class="container">
+          <div class="row">
+            </div>
+          <p class="text-center">&copy; 2024 Magnet . All rights reserved.</p>
+      </div>
+  </footer>
+
+      <script>
+        const cart = JSON.parse(sessionStorage.getItem('cart'));
+    
+        // Render cart items
+        renderCartItems();
+    
+        function renderCartItems() {
+          const cartItemsContainer = document.getElementById('cartItems');
+          cartItemsContainer.innerHTML = '';
+    
+          cart.forEach(item => {
+            const itemElement = document.createElement('div');
+            itemElement.classList.add('cart-item');
+            itemElement.innerHTML = `
+              <img src="${item.image}" alt="${item.name}">
+              <div>
+                <span>${item.name}</span>
+                <span>Quantity: ${item.quantity}</span>
+              </div>
+            `;
+            cartItemsContainer.appendChild(itemElement);
+          });
+        }
+    
+        function calculateOrderSummary() {
+          let subtotal = 0;
+          cart.forEach(item => {
+            subtotal += item.price * item.quantity;
+          });
+    
+          const shippingCost = 5;
+          const tax = subtotal * 0.1; // Assuming 10% tax
+          const total = subtotal + shippingCost + tax;
+    
+          return {
+            subtotal: subtotal.toFixed(2),
+            shippingCost: shippingCost.toFixed(2),
+            tax: tax.toFixed(2),
+            total: total.toFixed(2)
+          };
+        }
+    
+        renderOrderSummary();
+    
+        function renderOrderSummary() {
+          const orderSummaryContainer = document.getElementById('orderSummary');
+          const orderSummary = calculateOrderSummary();
+    
+          orderSummaryContainer.innerHTML = `
+            <div>
+              <h3>Order Summary</h3>
+              <p>Subtotal: ₹${orderSummary.subtotal}</p>
+              <p>Shipping Cost: ₹${orderSummary.shippingCost}</p>
+              <p>Tax: ₹${orderSummary.tax}</p>
+              <p>Total: ₹${orderSummary.total}</p>
+            </div>
+          `;
+        }
+    
+        const shippingForm = document.getElementById('shippingForm');
+        shippingForm.addEventListener('submit', function (e) {
+          e.preventDefault();
+          // Process shipping information and complete order
+          // You can add your logic here, such as sending data to a server
+          // and redirecting to a confirmation page
+          alert('Order Completed Successfully!');
+          // Example redirect to a confirmation page
+          window.location.href = 'confirmation.html';
+        });
+      </script>
+    </body>
+    </html>
+    

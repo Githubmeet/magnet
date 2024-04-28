@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="cart.css">
+  <link rel="stylesheet" href="footer.css">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"> <!-- Add fixed-top class here -->
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Magnet </a>
+      <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button> -->
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="index.html"><i class="fas fa-home fa-lg"></i></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="cart.html"><i class="fas fa-shopping-cart fa-lg"></i></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="login.html"><i class="fas fa-user fa-lg"></i></a>
+          </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link" href="admin_dashboard.html"><i class="fas fa-cogs fa-lg"></i></a>
+          </li> -->
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+    <!-- Jumbotron -->
+    <div class="jumbotron">
+      <h1 class="display-4">Your Cart</h1>
+      <p class="lead">Manage the items in your cart</p>
+
+      <!-- <p class="lead" id="welcomeMessage" style="display: none;">Welcome, User!</p> -->
+  </div>
+
+  <main>
+    <div class="container">
+        <!-- <div class="row"> -->
+            <!-- <div class="cart-summary-container"> -->
+            <div class="cart-summary">
+          <h2>Your Cart</h2>
+          <div class="cart-items" id="cart-items"></div>
+        </div>
+        <div class="cart-summary-container">
+          <div class="cart-summary">
+            <h2>Order Summary</h2>
+            <div class="summary-item">
+              <span>Subtotal</span>
+              <span id="subtotal">$0.00</span>
+            </div>
+            <div class="summary-item">
+              <span>Shipping</span>
+              <span>Free</span>
+            </div>
+            <div class="summary-item">
+              <span>Total</span>
+              <span id="total-price">$0.00</span>
+            </div>
+            <a href="shipping.html" class="btn btn-primary">Proceed to Checkout</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <main>
+    <footer id="footerMobile" class="footer-nav-mobile">
+      <div class="container">
+        <ul class="nav">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html"><i class="fas fa-home fa-lg"></i> Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="cart.html"><i class="fas fa-shopping-cart fa-lg"></i> Cart</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="login.html"><i class="fas fa-user fa-lg"></i> Login</a>
+          </li>
+  
+        </ul>
+      </div>
+    </footer> 
+    </main>
+  <footer class="footer mt-auto py-3 bg-dark text-white">
+    <div class="container text-center">
+      <p>&copy; 2024 Magnet. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="cart-script.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    // Retrieve the cart data from localStorage
+let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+// Function to update the cart items display
+function updateCartDisplay() {
+    const cartItemsElement = document.getElementById('cart-items');
+    cartItemsElement.innerHTML = ''; // Clear the existing cart items
+
+    let subtotal = 0;
+    cartItems.forEach(item => {
+        const cartItemElement = document.createElement('div');
+        cartItemElement.classList.add('cart-item');
+
+        // Create and append the image element
+        const imageElement = document.createElement('img');
+        imageElement.src = item.image;
+        imageElement.alt = item.name;
+        imageElement.classList.add('cart-item-image');
+        cartItemElement.appendChild(imageElement);
+
+        // Create and append the name element
+        const nameElement = document.createElement('div');
+        nameElement.classList.add('cart-item-name');
+        nameElement.textContent = item.name;
+        cartItemElement.appendChild(nameElement);
+
+        // Create and append the price element
+        const priceElement = document.createElement('div');
+        priceElement.classList.add('cart-item-price');
+        priceElement.textContent = `₹${item.price.toFixed(2)}`;
+        cartItemElement.appendChild(priceElement);
+
+        // Create and append the quantity input element
+        const quantityContainer = document.createElement('div');
+        quantityContainer.classList.add('cart-item-quantity');
+        const quantityInput = document.createElement('input');
+        quantityInput.type = 'number';
+        quantityInput.value = item.quantity;
+        quantityInput.classList.add('quantity-input');
+        quantityInput.addEventListener('change', () => updateCartItem(item, quantityInput.value));
+        quantityContainer.appendChild(quantityInput);
+
+        // Create and append the remove button element
+        const removeButton = document.createElement('button');
+        removeButton.textContent = 'Remove';
+        removeButton.classList.add('remove-btn');
+        removeButton.addEventListener('click', () => removeFromCart(item));
+        quantityContainer.appendChild(removeButton);
+
+        cartItemElement.appendChild(quantityContainer);
+        cartItemsElement.appendChild(cartItemElement);
+
+        const total = item.price * item.quantity;
+        subtotal += total;
+    });
+
+    const subtotalElement = document.getElementById('subtotal');
+    subtotalElement.textContent = `₹${subtotal.toFixed(2)}`;
+
+    const totalPriceElement = document.getElementById('total-price');
+    totalPriceElement.textContent = `₹${subtotal.toFixed(2)}`;
+}
+
+// Function to update a cart item
+function updateCartItem(item, newQuantity) {
+    item.quantity = parseInt(newQuantity);
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    updateCartDisplay();
+}
+
+// Function to remove an item from the cart
+function removeFromCart(item) {
+    const index = cartItems.indexOf(item);
+    if (index !== -1) {
+        cartItems.splice(index, 1);
+        localStorage.setItem('cartItems', JSON.stringify(cartItems));
+        updateCartDisplay();
+        updateShippingDisplay();
+    }
+}
+
+// Initialize the cart display
+updateCartDisplay();
+updateShippingDisplay();
+  </script>
+</body>
+</html>
